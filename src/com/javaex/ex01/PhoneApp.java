@@ -53,7 +53,7 @@ public class PhoneApp {
         	while(menuflag) {
            		System.out.println("1.리스트        2.등록       3.삭제       4.검색        5.종료");
                	System.out.println("-------------------------------------------");
-               	System.out.print(">메뉴번호:");
+               	System.out.print(">메뉴번호:");               	
            		menu = menusc.nextInt();
            		switch(menu) {
                	case 1:
@@ -109,9 +109,7 @@ public class PhoneApp {
     	} catch(Exception e) {
     		System.out.println("에러");
     	}
-    	
-    	
-   	
+
    		for(int i=0;i<pList.size();i++) {
    			bw.write(pList.get(i).DBinfo());
    			bw.newLine();

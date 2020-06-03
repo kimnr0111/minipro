@@ -1,4 +1,4 @@
-package com.javaex.ex01;
+package com.javaex.ex03;
 
 public class Person {
 	
@@ -50,6 +50,7 @@ public class Person {
 		String info = name + "," + hp + "," + company;
 		return info;
 	}
+	
 	
 
 }
