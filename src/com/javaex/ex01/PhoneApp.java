@@ -29,21 +29,17 @@ public class PhoneApp {
     		String name = info[0];
 			String hp = info[1];
 			String company = info[2];
-			pList.add(new Person(info[0], info[1], info[2]));
+			pList.add(new Person(name, hp, company));
 			System.out.println("이름:" + name);
 			System.out.println("휴대폰:" + hp);
 			System.out.println("회사:" + company);
 			System.out.println("");
     		
     	}
+    	br.close();
     	
     	Writer fw = new FileWriter("PhoneDB.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
-    	
-    	Scanner menusc = new Scanner(System.in);
-    	Scanner input = new Scanner(System.in);
-    	Scanner del = new Scanner(System.in);
-    	Scanner search = new Scanner(System.in);
     	int menu;
     	boolean menuflag = true;
 
@@ -53,7 +49,7 @@ public class PhoneApp {
     	
     	
     	try {
-   
+    		Scanner menusc = new Scanner(System.in);
         	while(menuflag) {
            		System.out.println("1.리스트        2.등록       3.삭제       4.검색        5.종료");
                	System.out.println("-------------------------------------------");
@@ -68,6 +64,7 @@ public class PhoneApp {
                		}
                		break;
                	case 2:
+               		Scanner input = new Scanner(System.in);
                		System.out.println("<2.등록>");
                		System.out.print(">이름: ");
                		String name = input.nextLine();
@@ -77,14 +74,18 @@ public class PhoneApp {
                		String company = input.nextLine();
                		pList.add(new Person(name, hp, company));
                		System.out.println("[등록되었습니다.]");
+               		input.close();
                		break;
                	case 3:
+               		Scanner del = new Scanner(System.in);
                		System.out.println("<3.삭제>");
                		System.out.print(">번호: ");
                		int delList = del.nextInt();
-                	pList.remove(delList);
+                	pList.remove(delList-1);
+                	del.close();
                		break;
                	case 4:
+               		Scanner search = new Scanner(System.in);
                		System.out.println("<4.검색>");
                		System.out.print(">이름: ");
                		String srch = search.nextLine();
@@ -93,6 +94,7 @@ public class PhoneApp {
                				pList.get(i).showList();
                			}
                		}
+               		search.close();
                		break;
                 case 5:
                    	menuflag = false;
@@ -103,6 +105,7 @@ public class PhoneApp {
                	}
                      	
            	}
+        	menusc.close();
     	} catch(Exception e) {
     		System.out.println("에러");
     	}
@@ -113,19 +116,12 @@ public class PhoneApp {
    			bw.write(pList.get(i).DBinfo());
    			bw.newLine();
    			}
+   		bw.close();
     	
     	
     	System.out.println("*******************************************");
     	System.out.println("*                  감사합니다                            *");
     	System.out.println("*******************************************");
-
-    	
-    	menusc.close();
-    	input.close();
-    	del.close();
-    	search.close();
-    	br.close();
-    	bw.close();
     	
     }
 
