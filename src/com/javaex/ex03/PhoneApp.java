@@ -43,9 +43,13 @@ public class PhoneApp {
 				break;
 
 			case 3:
-				int delNo = phoneView.showDel();
-				phoneRepo.delInfo(delNo);
-				phoneView.showDelResult();
+				try {
+					int delNo = phoneView.showDel();
+					phoneRepo.delInfo(delNo);
+					phoneView.showDelResult();
+				} catch(IndexOutOfBoundsException e) {
+					System.out.println("잘못입력하셨습니다.");
+				}
 				break;
 
 			case 4:
