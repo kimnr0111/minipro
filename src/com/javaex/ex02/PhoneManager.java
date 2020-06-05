@@ -54,7 +54,7 @@ public class PhoneManager {
 	}
 
 	// 2.등록선택시
-	public void showAdd() {
+	public void showAdd() throws IOException {
 		sc.nextLine();
 		System.out.println("<2.등록>");
    		System.out.print(">이름: ");
@@ -65,15 +65,17 @@ public class PhoneManager {
    		String company = sc.nextLine();
    		pList.add(new Person(name, hp, company));
    		System.out.println("[등록되었습니다.]");
+   		saveList();
 
 	}
 
 	// 3.삭제선택시
-	public void showRemove() {
+	public void showRemove() throws IOException {
 		System.out.println("<3.삭제>");
    		System.out.print(">번호: ");
    		int delList = sc.nextInt();
     	pList.remove(delList-1);
+    	saveList();
 
 	}
 
@@ -134,7 +136,6 @@ public class PhoneManager {
 		Writer fw = new FileWriter("PhoneDB.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
 		for(int i=0;i<pList.size();i++) {
-			System.out.println(pList.get(i).DBinfo());
    			bw.write(pList.get(i).DBinfo());
    			bw.newLine();
    			}
