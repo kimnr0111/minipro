@@ -49,12 +49,12 @@ public class PhoneApp {
     	
     	
     	try {
-    		Scanner menusc = new Scanner(System.in);
+    		Scanner sc = new Scanner(System.in);
         	while(menuflag) {
            		System.out.println("1.리스트        2.등록       3.삭제       4.검색        5.종료");
                	System.out.println("-------------------------------------------");
                	System.out.print(">메뉴번호:");               	
-           		menu = menusc.nextInt();
+           		menu = sc.nextInt();
            		switch(menu) {
                	case 1:
                		System.out.println("<1.리스트>");
@@ -64,37 +64,34 @@ public class PhoneApp {
                		}
                		break;
                	case 2:
-               		Scanner input = new Scanner(System.in);
+               		sc.nextLine();
                		System.out.println("<2.등록>");
                		System.out.print(">이름: ");
-               		String name = input.nextLine();
+               		String name = sc.nextLine();
                		System.out.print(">휴대전화: ");
-               		String hp = input.nextLine();
+               		String hp = sc.nextLine();
                		System.out.print(">회사전화: ");
-               		String company = input.nextLine();
+               		String company = sc.nextLine();
                		pList.add(new Person(name, hp, company));
                		System.out.println("[등록되었습니다.]");
-               		input.close();
                		break;
                	case 3:
-               		Scanner del = new Scanner(System.in);
+               		sc.nextLine();
                		System.out.println("<3.삭제>");
                		System.out.print(">번호: ");
-               		int delList = del.nextInt();
+               		int delList = sc.nextInt();
                 	pList.remove(delList-1);
-                	del.close();
                		break;
                	case 4:
-               		Scanner search = new Scanner(System.in);
+               		sc.nextLine();
                		System.out.println("<4.검색>");
                		System.out.print(">이름: ");
-               		String srch = search.nextLine();
+               		String srch = sc.nextLine();
                		for(int i=0;i<pList.size();i++) {
                			if((pList.get(i).getName()).contains(srch)) {
                				pList.get(i).showList();
                			}
                		}
-               		search.close();
                		break;
                 case 5:
                    	menuflag = false;
@@ -105,7 +102,7 @@ public class PhoneApp {
                	}
                      	
            	}
-        	menusc.close();
+        	sc.close();
     	} catch(Exception e) {
     		System.out.println("에러");
     	}
